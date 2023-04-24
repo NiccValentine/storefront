@@ -1,0 +1,13 @@
+[
+  {
+    "SqlConfigurationName": "storefronttest",
+    "ConnectionString": "Server=.; Database=StoreFrontTest; User Id=StoreFrontUser; Password=password;",
+    "SqlConfigurationJobs": [
+      {
+        "BeforeTestSqlFile": "SqlConfiguration\\StoreFront_Setup.sql",
+        "AfterTestSqlFile": "SqlConfiguration\\StoreFront_Teardown.sql",
+        "SortOrder": "0"
+      }
+    ]
+  }
+] 

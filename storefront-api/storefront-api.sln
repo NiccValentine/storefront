@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreFront.Common", "StoreFront.Common\StoreFront.Common.csproj", "{E86385C1-16FD-4FA5-B5B2-F60ACCC0AE7F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreFront.Repository", "StoreFront.Repository\StoreFront.Repository.csproj", "{5F6D7D03-CFDA-4C8C-BDF3-FEFBC2576B04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreFront.Service", "StoreFront.Service\StoreFront.Service.csproj", "{ACE08DB0-6EC9-43A7-B3D4-3C7D81242A8D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreFront.API", "StoreFront.API\StoreFront.API.csproj", "{D4C94925-4AF2-4084-9089-DBDB0AB40AEE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{408F3B15-E6F2-4116-8ED1-7FA0E57E526F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreFront.Repository.Test", "StoreFront.Repository.Test\StoreFront.Repository.Test.csproj", "{45CCDB8F-EF75-49D8-919B-89DE0BAE1B02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreFront.Service.Test", "StoreFront.Service.Test\StoreFront.Service.Test.csproj", "{FA2E6BEC-B129-4F2B-808D-53CC1BF42C41}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreFront.API.Test", "StoreFront.API.Test\StoreFront.API.Test.csproj", "{4C94B628-0D42-481B-9D09-F432ABFD3B47}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E86385C1-16FD-4FA5-B5B2-F60ACCC0AE7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E86385C1-16FD-4FA5-B5B2-F60ACCC0AE7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E86385C1-16FD-4FA5-B5B2-F60ACCC0AE7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E86385C1-16FD-4FA5-B5B2-F60ACCC0AE7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F6D7D03-CFDA-4C8C-BDF3-FEFBC2576B04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F6D7D03-CFDA-4C8C-BDF3-FEFBC2576B04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F6D7D03-CFDA-4C8C-BDF3-FEFBC2576B04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F6D7D03-CFDA-4C8C-BDF3-FEFBC2576B04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACE08DB0-6EC9-43A7-B3D4-3C7D81242A8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACE08DB0-6EC9-43A7-B3D4-3C7D81242A8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACE08DB0-6EC9-43A7-B3D4-3C7D81242A8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACE08DB0-6EC9-43A7-B3D4-3C7D81242A8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4C94925-4AF2-4084-9089-DBDB0AB40AEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4C94925-4AF2-4084-9089-DBDB0AB40AEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4C94925-4AF2-4084-9089-DBDB0AB40AEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4C94925-4AF2-4084-9089-DBDB0AB40AEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45CCDB8F-EF75-49D8-919B-89DE0BAE1B02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45CCDB8F-EF75-49D8-919B-89DE0BAE1B02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45CCDB8F-EF75-49D8-919B-89DE0BAE1B02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45CCDB8F-EF75-49D8-919B-89DE0BAE1B02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA2E6BEC-B129-4F2B-808D-53CC1BF42C41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA2E6BEC-B129-4F2B-808D-53CC1BF42C41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA2E6BEC-B129-4F2B-808D-53CC1BF42C41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA2E6BEC-B129-4F2B-808D-53CC1BF42C41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C94B628-0D42-481B-9D09-F432ABFD3B47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C94B628-0D42-481B-9D09-F432ABFD3B47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C94B628-0D42-481B-9D09-F432ABFD3B47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C94B628-0D42-481B-9D09-F432ABFD3B47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{45CCDB8F-EF75-49D8-919B-89DE0BAE1B02} = {408F3B15-E6F2-4116-8ED1-7FA0E57E526F}
+		{FA2E6BEC-B129-4F2B-808D-53CC1BF42C41} = {408F3B15-E6F2-4116-8ED1-7FA0E57E526F}
+		{4C94B628-0D42-481B-9D09-F432ABFD3B47} = {408F3B15-E6F2-4116-8ED1-7FA0E57E526F}
+	EndGlobalSection
+EndGlobal

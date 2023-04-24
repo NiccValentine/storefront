@@ -1,0 +1,465 @@
+{
+	"info": {
+		"_postman_id": "dbc0755c-6cca-4bf7-8400-314b1faaaba4",
+		"name": "StoreFront",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19805161"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Product GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5000/products/",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"products",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product GetSingle",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5000/products/01adbeb6-60e7-4252-9d4d-667e68cff262",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"products",
+								"01adbeb6-60e7-4252-9d4d-667e68cff262"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": \"344b6e12-6132-473a-a553-c7c0f497c75f\",\r\n    \"productName\": \"new new test product\",\r\n    \"productDescription\": \"test description for new new test product\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5000/products",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ProductId\": \"344b6e12-6132-473a-a553-c7c0f497c75f\",\r\n    \"ProductName\": \"Newest test product\",\r\n    \"ProductDescription\": \"Newest description for the newest test product\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5000/products/344b6e12-6132-473a-a553-c7c0f497c75f",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"products",
+								"344b6e12-6132-473a-a553-c7c0f497c75f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5000/products/e584b51a-363b-457f-9137-0ca650484792",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"products",
+								"e584b51a-363b-457f-9137-0ca650484792"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product SEARCH",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5000/products/search?productName=2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"products",
+								"search"
+							],
+							"query": [
+								{
+									"key": "productName",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products not in store",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5000/stores/23fbdc7e-5f22-437e-840f-953c449d5c55/products/not",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"stores",
+								"23fbdc7e-5f22-437e-840f-953c449d5c55",
+								"products",
+								"not"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product by StoreId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5000/stores/23fbdc7e-5f22-437e-840f-953c449d5c55/products",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"stores",
+								"23fbdc7e-5f22-437e-840f-953c449d5c55",
+								"products"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Store",
+			"item": [
+				{
+					"name": "Store GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5000/stores",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"stores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store GETSINGLE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5000/stores/23fbdc7e-5f22-437e-840f-953c449d5c55",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"stores",
+								"23fbdc7e-5f22-437e-840f-953c449d5c55"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"StoreId\": \"0d403322-47fd-4852-be80-c285d384981e\",\r\n    \"StoreName\": \"New test store\",\r\n    \"StoreDescription\": \"Description for new test store\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5000/stores",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"stores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store PUT",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"StoreId\": \"0d403322-47fd-4852-be80-c285d384981e\",\r\n    \"StoreName\": \"Newest test store\",\r\n    \"StoreDescription\": \"Description for newest test store\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5000/stores/0d403322-47fd-4852-be80-c285d384981e",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"stores",
+								"0d403322-47fd-4852-be80-c285d384981e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store DELETE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5000/stores/0d403322-47fd-4852-be80-c285d384981e",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"stores",
+								"0d403322-47fd-4852-be80-c285d384981e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Store SEARCH",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5000/stores/search?storeName=1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"stores",
+								"search"
+							],
+							"query": [
+								{
+									"key": "storeName",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Stores by ProductId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5000/product/01adbeb6-60e7-4252-9d4d-667e68cff262/stores",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"product",
+								"01adbeb6-60e7-4252-9d4d-667e68cff262",
+								"stores"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "StoreProduct",
+			"item": [
+				{
+					"name": "StoreProduct GET",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5000/storeproducts",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"storeproducts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "StoreProduct GETSINGLE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5000/storeproducts/cb3aa8bf-30de-4702-8441-247f23c1a032/products/b5f4ab99-69fd-41d5-9fb8-0222624812b2",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"storeproducts",
+								"cb3aa8bf-30de-4702-8441-247f23c1a032",
+								"products",
+								"b5f4ab99-69fd-41d5-9fb8-0222624812b2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "StoreProduct POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"StoreId\": \"cb3aa8bf-30de-4702-8441-247f23c1a032\",\r\n    \"ProductId\": \"01adbeb6-60e7-4252-9d4d-667e68cff262\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:5000/storeproducts",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"storeproducts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "StoreProduct Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:5000/storeproducts/cb3aa8bf-30de-4702-8441-247f23c1a032/products/01adbeb6-60e7-4252-9d4d-667e68cff262",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"storeproducts",
+								"cb3aa8bf-30de-4702-8441-247f23c1a032",
+								"products",
+								"01adbeb6-60e7-4252-9d4d-667e68cff262"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

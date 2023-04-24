@@ -1,0 +1,7 @@
+ALTER TABLE StoreProduct
+DROP COLUMN Stock
+GO
+
+ALTER TABLE StoreProduct
+DROP COLUMN Price
+GO
