@@ -35,7 +35,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:5000/products/01adbeb6-60e7-4252-9d4d-667e68cff262",
+							"raw": "https://localhost:5000/products/a77031e4-f4b5-41f5-9978-ba7b622aa663",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -43,7 +43,7 @@
 							"port": "5000",
 							"path": [
 								"products",
-								"01adbeb6-60e7-4252-9d4d-667e68cff262"
+								"a77031e4-f4b5-41f5-9978-ba7b622aa663"
 							]
 						}
 					},
@@ -56,7 +56,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"productId\": \"344b6e12-6132-473a-a553-c7c0f497c75f\",\r\n    \"productName\": \"new new test product\",\r\n    \"productDescription\": \"test description for new new test product\"\r\n}",
+							"raw": "{\r\n    \"productId\": \"344b6e12-6132-473a-a553-c7c0f497c75f\",\r\n    \"productName\": \"Diet Coke\",\r\n    \"productDescription\": \"The real worst beverage\",\r\n    \"storeProduct\": []\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -84,7 +84,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"ProductId\": \"344b6e12-6132-473a-a553-c7c0f497c75f\",\r\n    \"ProductName\": \"Newest test product\",\r\n    \"ProductDescription\": \"Newest description for the newest test product\"\r\n}",
+							"raw": "{\r\n    \"productId\": \"344b6e12-6132-473a-a553-c7c0f497c75f\",\r\n    \"productName\": \"Diet Zero\",\r\n    \"productDescription\": \"Truly, the real worst beverage\",\r\n    \"storeProduct\": []\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -112,7 +112,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:5000/products/e584b51a-363b-457f-9137-0ca650484792",
+							"raw": "https://localhost:5000/products/344b6e12-6132-473a-a553-c7c0f497c75f",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -120,7 +120,7 @@
 							"port": "5000",
 							"path": [
 								"products",
-								"e584b51a-363b-457f-9137-0ca650484792"
+								"344b6e12-6132-473a-a553-c7c0f497c75f"
 							]
 						}
 					},
@@ -132,7 +132,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:5000/products/search?productName=2",
+							"raw": "https://localhost:5000/products/search?productName=Co",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -145,7 +145,7 @@
 							"query": [
 								{
 									"key": "productName",
-									"value": "2"
+									"value": "Co"
 								}
 							]
 						}
@@ -158,7 +158,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:5000/stores/23fbdc7e-5f22-437e-840f-953c449d5c55/products/not",
+							"raw": "https://localhost:5000/stores/6c17772b-4e2d-4a33-af36-25b6b551a862/products/not",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -166,7 +166,7 @@
 							"port": "5000",
 							"path": [
 								"stores",
-								"23fbdc7e-5f22-437e-840f-953c449d5c55",
+								"6c17772b-4e2d-4a33-af36-25b6b551a862",
 								"products",
 								"not"
 							]
@@ -180,7 +180,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:5000/stores/23fbdc7e-5f22-437e-840f-953c449d5c55/products",
+							"raw": "https://localhost:5000/stores/6c17772b-4e2d-4a33-af36-25b6b551a862/products",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -188,7 +188,7 @@
 							"port": "5000",
 							"path": [
 								"stores",
-								"23fbdc7e-5f22-437e-840f-953c449d5c55",
+								"6c17772b-4e2d-4a33-af36-25b6b551a862",
 								"products"
 							]
 						}
@@ -225,7 +225,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:5000/stores/23fbdc7e-5f22-437e-840f-953c449d5c55",
+							"raw": "https://localhost:5000/stores/fbb39e2a-1b01-4832-96b8-5cc41c22f48f",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -233,7 +233,7 @@
 							"port": "5000",
 							"path": [
 								"stores",
-								"23fbdc7e-5f22-437e-840f-953c449d5c55"
+								"fbb39e2a-1b01-4832-96b8-5cc41c22f48f"
 							]
 						}
 					},
@@ -246,7 +246,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"StoreId\": \"0d403322-47fd-4852-be80-c285d384981e\",\r\n    \"StoreName\": \"New test store\",\r\n    \"StoreDescription\": \"Description for new test store\"\r\n}",
+							"raw": "{\r\n    \"StoreId\": \"0d403322-47fd-4852-be80-c285d384981e\",\r\n    \"StoreName\": \"Circuit City\",\r\n    \"StoreDescription\": \"404 store not found\",\r\n    \"StoreProduct\": []\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -274,7 +274,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"StoreId\": \"0d403322-47fd-4852-be80-c285d384981e\",\r\n    \"StoreName\": \"Newest test store\",\r\n    \"StoreDescription\": \"Description for newest test store\"\r\n}",
+							"raw": "{\r\n    \"StoreId\": \"0d403322-47fd-4852-be80-c285d384981e\",\r\n    \"StoreName\": \"Best Buy\",\r\n    \"StoreDescription\": \"200 store found\",\r\n    \"StoreProduct\": []\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -322,7 +322,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:5000/stores/search?storeName=1",
+							"raw": "https://localhost:5000/stores/search?storeName=wal",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -335,7 +335,7 @@
 							"query": [
 								{
 									"key": "storeName",
-									"value": "1"
+									"value": "wal"
 								}
 							]
 						}
@@ -348,7 +348,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:5000/product/01adbeb6-60e7-4252-9d4d-667e68cff262/stores",
+							"raw": "https://localhost:5000/product/a77031e4-f4b5-41f5-9978-ba7b622aa663/stores",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -356,7 +356,7 @@
 							"port": "5000",
 							"path": [
 								"product",
-								"01adbeb6-60e7-4252-9d4d-667e68cff262",
+								"a77031e4-f4b5-41f5-9978-ba7b622aa663",
 								"stores"
 							]
 						}
@@ -369,54 +369,13 @@
 			"name": "StoreProduct",
 			"item": [
 				{
-					"name": "StoreProduct GET",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://localhost:5000/storeproducts",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"storeproducts"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "StoreProduct GETSINGLE",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://localhost:5000/storeproducts/cb3aa8bf-30de-4702-8441-247f23c1a032/products/b5f4ab99-69fd-41d5-9fb8-0222624812b2",
-							"protocol": "https",
-							"host": [
-								"localhost"
-							],
-							"port": "5000",
-							"path": [
-								"storeproducts",
-								"cb3aa8bf-30de-4702-8441-247f23c1a032",
-								"products",
-								"b5f4ab99-69fd-41d5-9fb8-0222624812b2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "StoreProduct POST",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"StoreId\": \"cb3aa8bf-30de-4702-8441-247f23c1a032\",\r\n    \"ProductId\": \"01adbeb6-60e7-4252-9d4d-667e68cff262\"\r\n}",
+							"raw": "{\r\n    \"StoreId\": \"fbb39e2a-1b01-4832-96b8-5cc41c22f48f\",\r\n    \"ProductId\": \"ca449bda-9bcd-4f2f-a2c4-60700a577bbb\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -443,7 +402,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "https://localhost:5000/storeproducts/cb3aa8bf-30de-4702-8441-247f23c1a032/products/01adbeb6-60e7-4252-9d4d-667e68cff262",
+							"raw": "https://localhost:5000/storeproducts/fbb39e2a-1b01-4832-96b8-5cc41c22f48f/products/ca449bda-9bcd-4f2f-a2c4-60700a577bbb",
 							"protocol": "https",
 							"host": [
 								"localhost"
@@ -451,9 +410,9 @@
 							"port": "5000",
 							"path": [
 								"storeproducts",
-								"cb3aa8bf-30de-4702-8441-247f23c1a032",
+								"fbb39e2a-1b01-4832-96b8-5cc41c22f48f",
 								"products",
-								"01adbeb6-60e7-4252-9d4d-667e68cff262"
+								"ca449bda-9bcd-4f2f-a2c4-60700a577bbb"
 							]
 						}
 					},
