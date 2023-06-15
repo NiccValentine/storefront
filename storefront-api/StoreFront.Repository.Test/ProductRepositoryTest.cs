@@ -8,11 +8,9 @@ namespace StoreFront.Repository.Test
     [Collection("Sequential")]
     public class ProductRepositoryTest : IDisposable
     {
+        #region Public Constructors
         public ProductRepositoryTest() 
         {
-
-            #region Public Constructors
-
             this._sqlLoader = new SqlLoader();
 
             this._productRepository = new ProductRepository();
@@ -25,9 +23,8 @@ namespace StoreFront.Repository.Test
             {
                 this._sqlLoader.TearDown("storefronttest");
             }
-
-            #endregion
         }
+        #endregion
 
         #region Private constructors
         private SqlLoader _sqlLoader { get; }
@@ -37,6 +34,14 @@ namespace StoreFront.Repository.Test
         #endregion
 
         #region Tests
+        [Fact]
+        public void Get_Success()
+        {
+            var result = this._productRepository.Get();
+
+            Assert.Equal(3, result.Count);
+        }
+
         [Fact]
         public void GetSingle_Success()
         {

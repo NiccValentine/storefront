@@ -23,6 +23,12 @@ const ProductEdit = () => {
         productDescription: ""
     })
 
+    const [originalProduct, setOriginalProduct] = React.useState({
+        productId: null,
+        productName: "",
+        productDescription: ""
+    })
+
     const [errors, setErrors] = React.useState([])
     const [openDelete, setOpenDelete] = React.useState(false)
 
@@ -30,6 +36,7 @@ const ProductEdit = () => {
         productService.getSingle(productId).then(response => {
             if (response.status === 200) {
                 setProduct(response.data)
+                setOriginalProduct(response.data)
             }
         })
     }, []);
@@ -106,6 +113,14 @@ const ProductEdit = () => {
         }
     }
 
+    const hasProductChanged = () => {
+        if (originalProduct.productName === product.productName && originalProduct.productDescription === product.productDescription) {
+            return true;
+        }
+
+        return false;
+    }
+
     return (
         <React.Fragment>
             <Toolbar>
@@ -118,10 +133,10 @@ const ProductEdit = () => {
                 <Box sx={{
                     flexGrow: 1
                 }} />
-                <IconButton onClick={saveProduct}>
+                <IconButton disabled={hasProductChanged()} onClick={saveProduct} color={"info"}>
                     <Save fontSize="large" />
                 </IconButton>
-                <IconButton onClick={() => handleDeleteOpen()}>
+                <IconButton disabled={product.productId === null} onClick={() => handleDeleteOpen()}>
                     <Delete fontSize="large" />
                 </IconButton>
                 <Dialog

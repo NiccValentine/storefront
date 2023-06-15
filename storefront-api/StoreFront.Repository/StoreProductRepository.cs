@@ -11,69 +11,6 @@
     {
         #region Public Methods
 
-        public List<StoreProduct> Get()
-        {
-            var sql = "SELECT StoreId, ProductId FROM StoreProduct ORDER BY StoreId";
-
-            var storeProducts = new List<StoreProduct>();
-
-            using (var sqlConnection = new SqlConnection(Settings.ConnectionString))
-            {
-                using (var sqlCommand = new SqlCommand(sql, sqlConnection))
-                {
-                    sqlConnection.Open();
-
-                    using (var dataReader = sqlCommand.ExecuteReader())
-                    {
-                        while (dataReader.Read())
-                        {
-                            StoreProduct storeProduct = this.GetStoreProduct(dataReader);
-                            storeProducts.Add(storeProduct);
-                        }
-                    }
-                }
-            }
-            return storeProducts;
-        }
-
-        public StoreProduct GetSingle(Guid storeId, Guid productId)
-        {
-            if (storeId == Guid.Empty)
-            {
-                throw new ArgumentException(nameof(storeId));
-            }
-
-            if (productId == Guid.Empty)
-            {
-                throw new ArgumentException(nameof(productId));
-            }
-
-            var sql = "SELECT StoreId, ProductId FROM StoreProduct WHERE StoreId = @StoreId AND ProductId = @ProductId";
-
-            StoreProduct storeProduct = null;
-
-            using (var sqlConnection = new SqlConnection(Settings.ConnectionString))
-            {
-                using (var sqlCommand = new SqlCommand(sql, sqlConnection))
-                {
-                    sqlCommand.Parameters.AddWithValue("@StoreId", storeId);
-                    sqlCommand.Parameters.AddWithValue("@ProductId", productId);
-
-
-                    sqlConnection.Open();
-
-                    using (var dataReader = sqlCommand.ExecuteReader())
-                    {
-                        if (dataReader.Read())
-                        {
-                            storeProduct = this.GetStoreProduct(dataReader);
-                        }
-                    }
-                }
-            }
-            return storeProduct;
-        }
-
         public bool Insert(StoreProduct storeProduct)
         {
             if (storeProduct == null)

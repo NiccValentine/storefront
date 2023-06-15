@@ -30,30 +30,6 @@
 
         #region Public Methods
 
-        public List<StoreProduct> Get()
-        {
-            var storeProducts = this._storeProductRepository.Get();
-
-            return storeProducts;
-        }
-
-        public StoreProduct GetSingle(Guid storeId, Guid productId)
-        {
-            if (storeId == Guid.Empty)
-            {
-                throw new ArgumentException(nameof(storeId));
-            }
-
-            if (productId == Guid.Empty)
-            {
-                throw new ArgumentException(nameof(productId));
-            }
-
-            var storeProduct = this._storeProductRepository.GetSingle(storeId, productId);
-
-            return storeProduct;
-        }
-
         public ServiceResult<StoreProduct> Insert(StoreProduct storeProduct)
         {
             if (storeProduct == null)

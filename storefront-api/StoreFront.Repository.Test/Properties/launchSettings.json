@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "StoreFront.Repository.Test": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:50118;http://localhost:50120"
+    }
+  }
+}

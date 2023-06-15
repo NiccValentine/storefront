@@ -10,6 +10,8 @@ namespace StoreFront.API
     using StoreFront.Common.Interfaces.Services;
     using StoreFront.Repository;
     using StoreFront.Service;
+    using StoreFront.Common;
+    using StoreFront.EF.Repository;
 
     public class Startup
     {
@@ -29,11 +31,20 @@ namespace StoreFront.API
 
             // Repositories
             
-            services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<IStoreRepository, StoreRepository>();
-            services.AddScoped<IStoreProductRepository, StoreProductRepository>();
-           
-                // Services
+            if (Settings.UsingEF)
+            {
+                services.AddScoped<IProductRepository, ProductRepositoryEF>();
+                services.AddScoped<IStoreRepository, StoreRepositoryEF>();
+                services.AddScoped<IStoreProductRepository, StoreProductRepositoryEF>();
+            }
+            else
+            {
+                services.AddScoped<IProductRepository, ProductRepository>();
+                services.AddScoped<IStoreRepository, StoreRepository>();
+                services.AddScoped<IStoreProductRepository, StoreProductRepository>();
+            }
+
+            // Services
 
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IStoreService, StoreService>();

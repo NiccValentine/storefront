@@ -1,4 +1,4 @@
-import { Add, KeyboardArrowLeft, RemoveCircleOutline, Save } from '@mui/icons-material';
+import { Add, Delete, KeyboardArrowLeft, RemoveCircleOutline, Save } from '@mui/icons-material';
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Divider, FormControl, FormGroup, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Toolbar, Typography, useTheme } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
@@ -25,18 +25,26 @@ const StoreEdit = () => {
         storeName: "",
         storeDescription: ""
     })
+    const [originalStore, setOriginalStore] = React.useState({
+        storeId: null,
+        storeName: "",
+        storeDescription: ""
+    })
+
     const [products, setProducts] = React.useState([])
     const [product, setProduct] = React.useState(null)
     const [unlinkedProducts, setUnlinkedProducts] = React.useState([])
     const [addDialogOpen, setAddDialogOpen] = React.useState(false)
     const [errors, setErrors] = React.useState([])
     const [confirmationOpen, setConfirmationOpen] = React.useState(false)
+    const [storeDeleteOpen, setStoreDeleteOpen] = React.useState(false)
 
 
     React.useEffect(() => {
         storeService.getSingle(storeId).then(response => {
             if (response.status === 200) {
                 setStore(response.data)
+                setOriginalStore(response.data)
             }
         });
 
@@ -62,6 +70,30 @@ const StoreEdit = () => {
     const handleClose = () => {
         setConfirmationOpen(false)
         setProduct(null)
+    }
+
+    const handleStoreDeleteOpen = () => {
+        setStoreDeleteOpen(true)
+    }
+
+    const handleStoreDeleteClose = () => {
+        setStoreDeleteOpen(false)
+    }
+
+    const handleStoreDeleteAccept = () => {
+        store.storeId = storeId
+        storeService.delete(storeId)
+            .then((response) => {
+                if (response.status === 200) {
+                    addError("Delete Successful")
+                    navigate("/stores");
+                }
+            }).catch((error) => {
+                if (error.response.status === 500)
+                    setErrors(error.response.data.messages)
+                addError("Unable to delete this store, please remove any products tied to it")
+            });
+        setStoreDeleteOpen(false);
     }
 
     const handleProductDeleteClick = (product) => {
@@ -147,6 +179,14 @@ const StoreEdit = () => {
         }
     }
 
+    const hasStoreChanged = () => {
+        if (originalStore.storeName === store.storeName && originalStore.storeDescription === store.storeDescription) {
+            return true;
+        }
+
+        return false;
+    }
+
     return (
         <React.Fragment>
             <Toolbar>
@@ -159,9 +199,31 @@ const StoreEdit = () => {
                 <Box sx={{
                     flexGrow: 1
                 }} />
-                <IconButton onClick={saveStore} color={"info"}>
+                <IconButton disabled={hasStoreChanged()} onClick={saveStore} color={"info"}>
                     <Save fontSize='large' />
                 </IconButton>
+                <IconButton disabled={store.storeId === null} onClick={() => handleStoreDeleteOpen()}>
+                    <Delete fontSize="large" />
+                </IconButton>
+                <Dialog
+                    open={storeDeleteOpen}
+                    onClose={handleStoreDeleteClose}
+                >
+                    <DialogTitle id="delete-dialog-description">
+                        {"Delete Store"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
+                            <Typography>
+                                {store.storeName} will be deleted.
+                            </Typography>
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={handleStoreDeleteClose}>Cancel</Button>
+                        <Button onClick={handleStoreDeleteAccept}>Accept</Button>
+                    </DialogActions>
+                </Dialog>
             </Toolbar>
             <Divider />
             <FormGroup>
@@ -204,7 +266,7 @@ const StoreEdit = () => {
                                 </Typography>
                             </TableCell>
                             <TableCell padding='checkbox'>
-                                <IconButton onClick={() => handleAddProductOpen()}>
+                                <IconButton disabled={store.storeId === null} onClick={() => handleAddProductOpen()}>
                                     <Add fontSize='large' />
                                 </IconButton>
                                 <Dialog

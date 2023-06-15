@@ -6,9 +6,7 @@
 
     public interface IStoreProductRepository
     {
-        bool Delete(Guid storeId, Guid productId);
-        List<StoreProduct> Get();
-        StoreProduct GetSingle(Guid storeId, Guid productId);
         bool Insert(StoreProduct storeProduct);
+        bool Delete(Guid storeId, Guid productId);
     }
 }

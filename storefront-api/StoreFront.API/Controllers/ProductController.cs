@@ -8,14 +8,12 @@
     [ApiController]
     public class ProductController : ControllerBase
     {
-        public ProductController(IProductService productService, IStoreService storeService)
+        public ProductController(IProductService productService)
         {
             this._productService = productService;
-            this._storeService = storeService;
         }
 
         private IProductService _productService { get; }
-        private IStoreService _storeService { get; }
 
         [HttpGet("/products")]
         public ActionResult Get()
@@ -129,6 +127,11 @@
         {
             try
             {
+                if (productId == Guid.Empty)
+                {
+                    throw new ArgumentException(nameof(productId));
+                }
+
                 var product = this._productService.GetSingle(productId);
                 
                 if (product == null)
@@ -157,6 +160,11 @@
         {
             try
             {
+                if (product == null)
+                {
+                    throw new ArgumentNullException(nameof(product));
+                }
+
                 var serviceResult = this._productService.Insert(product);
 
                 if (serviceResult.IsSuccessful)
@@ -187,6 +195,11 @@
         {
             try
             {
+                if (product == null)
+                {
+                    throw new ArgumentNullException(nameof(product));
+                }
+
                 var serviceResult = this._productService.Update(product);
 
                 if (serviceResult.IsSuccessful)
@@ -217,6 +230,12 @@
         {
             try
             {
+
+                if (productId == Guid.Empty)
+                {
+                    throw new ArgumentException();
+                }
+
                 var serviceResult = this._productService.Delete(productId);
 
                 if (serviceResult.IsSuccessful == true)

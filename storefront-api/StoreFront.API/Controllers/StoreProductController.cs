@@ -16,66 +16,15 @@
 
         private IStoreProductService _storeProductService { get; }
 
-        [HttpGet]
-        public ActionResult Get()
-        {
-            try
-            {
-                var storeProducts = this._storeProductService.Get();
-
-                return this.StatusCode(200, storeProducts);
-            }
-            catch (ArgumentNullException argumentNullException)
-            {
-                return this.StatusCode(400);
-            }
-            catch (ArgumentException argumentException)
-            {
-                return this.StatusCode(400);
-            }
-            catch (Exception exception)
-            {
-                return this.StatusCode(500);
-            }
-        }
-
-        [HttpGet("{storeId}/products/{productId}")]
-        public ActionResult GetSingle(Guid storeId, Guid productId)
-        {
-            try
-            {
-                var storeProduct = this._storeProductService.GetSingle(storeId, productId);
-
-                if (storeId == null)
-                {
-                    return this.StatusCode(204);
-                }
-                else if (productId == null)
-                {
-                    return this.StatusCode(204);
-                }
-                
-                return this.StatusCode(200, storeProduct);
-            }
-            catch (ArgumentNullException argumentNullException)
-            {
-                return this.StatusCode(400);
-            }
-            catch (ArgumentException argumentException)
-            {
-                return this.StatusCode(400);
-            }
-            catch (Exception exception)
-            {
-                return this.StatusCode(500);
-            }
-        }
-
         [HttpPost("/storeproducts")]
         public ActionResult Post([FromBody] StoreProduct storeProduct)
         {
             try
             {
+                if (storeProduct == null)
+                {
+                    throw new ArgumentNullException(nameof(storeProduct));
+                }
 
                 var serviceResult = this._storeProductService.Insert(storeProduct);
 
@@ -108,6 +57,16 @@
         {
             try
             {
+                if (storeId == Guid.Empty)
+                {
+                    throw new ArgumentException(nameof(storeId));
+                }
+
+                if (productId == Guid.Empty)
+                {
+                    throw new ArgumentException(nameof(productId));
+                }
+
                 var serviceResult = this._storeProductService.Delete(storeId, productId);
 
                 if (serviceResult.IsSuccessful == true)

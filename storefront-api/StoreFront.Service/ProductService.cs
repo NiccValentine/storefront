@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Security.Cryptography.X509Certificates;
     using Common.Interfaces.Repositories;
     using Common.Interfaces.Services;
     using Common.Models;
@@ -57,13 +58,6 @@
             }
 
             var products = this._productRepository.GetProductsByStoreId(storeId);
-
-            return products;
-        }
-
-        public List<Product> ProductSearch(string productName)
-        {
-            var products = this._productRepository.ProductSearch(productName);
 
             return products;
         }
@@ -132,7 +126,18 @@
             return serviceResult;
         }
 
-        
+        public List<Product> ProductSearch(string productName)
+        {
+            if (productName == null)
+            {
+                throw new ArgumentNullException(nameof(productName));
+            }
+
+            var products = this._productRepository.ProductSearch(productName);
+
+            return products;
+        }
+
 
         #endregion
 

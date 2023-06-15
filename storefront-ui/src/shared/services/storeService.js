@@ -13,6 +13,10 @@ export default class StoreService {
         return StoreFrontAxiosService.get("/stores")
     }
 
+    getStoresByProductId(productId) {
+        return StoreFrontAxiosService.get(`/product/${productId}/stores`)
+    }
+
     getSingle(storeId) {
         return StoreFrontAxiosService.get(`/stores/${storeId}`)
     }
@@ -25,7 +29,7 @@ export default class StoreService {
         return StoreFrontAxiosService.put(`/stores/${storeId}`, store)
     }
 
-    getStoresByProductId(productId) {
-        return StoreFrontAxiosService.get(`/product/${productId}/stores`)
+    delete(storeId) {
+        return StoreFrontAxiosService.delete(`/stores/${storeId}`)
     }
 }

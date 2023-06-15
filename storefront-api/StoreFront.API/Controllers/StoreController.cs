@@ -8,14 +8,12 @@
     [ApiController]
     public class StoreController : ControllerBase
     {
-        public StoreController(IStoreService storeService, IProductService productService)
+        public StoreController(IStoreService storeService)
         {
             this._storeService = storeService;
-            this._productService = productService;
         }
 
         private IStoreService _storeService { get; }
-        private IProductService _productService { get; }
 
         [HttpGet("/stores")]
         public ActionResult Get()
@@ -40,33 +38,7 @@
             }
         }
 
-        [HttpGet("/stores/search")]
-        public ActionResult StoreSearch([FromQuery]string storeName)
-        {
-            try
-            {
-                var stores = this._storeService.StoreSearch(storeName);
-
-                if (stores.Count == 0)
-                {
-                    return this.StatusCode(204);
-                }
-
-                return this.StatusCode(200, stores);
-            }
-            catch (ArgumentNullException argumentNullException)
-            {
-                return this.StatusCode(400);
-            }
-            catch (ArgumentException argumentException)
-            {
-                return this.StatusCode(400);
-            }
-            catch (Exception exception)
-            {
-                return this.StatusCode(500);
-            }
-        }
+        
 
         [HttpGet("/product/{productId}/stores")]
         public ActionResult GetStoresByProductId(Guid productId)
@@ -102,6 +74,11 @@
         {
             try
             {
+                if (storeId == Guid.Empty)
+                {
+                    throw new ArgumentException(nameof(storeId));
+                }
+
                 var store = this._storeService.GetSingle(storeId);
 
                 if (store == null)
@@ -130,6 +107,11 @@
         {
             try
             {
+                if (store == null)
+                {
+                    throw new ArgumentNullException(nameof(store));
+                }
+
                 var serviceResult = this._storeService.Insert(store);
                 
                 if (serviceResult.IsSuccessful)
@@ -160,6 +142,11 @@
         {
             try
             {
+                if (store == null)
+                {
+                    throw new ArgumentNullException(nameof(store));
+                }
+
                 var serviceResult = this._storeService.Update(store);
 
                 if (serviceResult.IsSuccessful)
@@ -190,6 +177,11 @@
         {
             try
             {
+                if (storeId == Guid.Empty)
+                {
+                    throw new ArgumentException(nameof(storeId));
+                }
+
                 var serviceResult = this._storeService.Delete(storeId);
 
                 if (serviceResult.IsSuccessful == true)
@@ -200,6 +192,34 @@
                 {
                     return this.StatusCode(400, serviceResult);
                 }
+            }
+            catch (ArgumentNullException argumentNullException)
+            {
+                return this.StatusCode(400);
+            }
+            catch (ArgumentException argumentException)
+            {
+                return this.StatusCode(400);
+            }
+            catch (Exception exception)
+            {
+                return this.StatusCode(500);
+            }
+        }
+
+        [HttpGet("/stores/search")]
+        public ActionResult StoreSearch([FromQuery] string storeName)
+        {
+            try
+            {
+                var stores = this._storeService.StoreSearch(storeName);
+
+                if (stores.Count == 0)
+                {
+                    return this.StatusCode(204);
+                }
+
+                return this.StatusCode(200, stores);
             }
             catch (ArgumentNullException argumentNullException)
             {

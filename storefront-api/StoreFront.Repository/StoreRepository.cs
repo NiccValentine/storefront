@@ -36,37 +36,15 @@
             return stores;
         }
 
-        public List<Store> StoreSearch(string storeName)
-        {
-            var sql = "SELECT StoreId, StoreName, StoreDescription FROM Store WHERE LOWER(StoreName) LIKE @StoreName";
-            
-            var stores = new List<Store>();
-
-            using (var sqlConnection = new SqlConnection(Settings.ConnectionString))
-            {
-                using (var sqlCommand = new SqlCommand(sql, sqlConnection))
-                {
-                    storeName = $"%{storeName.ToLower()}%";
-                    sqlCommand.Parameters.AddWithValue("@StoreName", storeName);
-
-                    sqlConnection.Open();
-
-                    using (var dataReader = sqlCommand.ExecuteReader())
-                    {
-                        while (dataReader.Read())
-                        {
-                            Store store = this.GetStore(dataReader);
-                            stores.Add(store);
-                        }
-                    }
-                }
-            }
-            return stores;
-        }
 
         public List<Store> GetStoresByProductId(Guid productId)
         {
-            var sql = "SELECT s.StoreId, s.StoreName, s.StoreDescription, sp.Stock, sp.Price FROM Store s INNER JOIN StoreProduct sp ON sp.StoreId = s.storeId WHERE sp.ProductId = @ProductId";
+            if (productId == Guid.Empty)
+            {
+                throw new ArgumentException(nameof(productId));
+            }
+
+            var sql = "SELECT s.StoreId, s.StoreName, s.StoreDescription FROM Store s INNER JOIN StoreProduct sp ON sp.StoreId = s.storeId WHERE sp.ProductId = @ProductId";
             
             var stores = new List<Store>();
 
@@ -214,6 +192,40 @@
                 }
             }
         }
+
+        public List<Store> StoreSearch(string storeName)
+        {
+            if (storeName == null)
+            {
+                throw new ArgumentNullException(nameof(storeName));
+            }
+
+            var sql = "SELECT StoreId, StoreName, StoreDescription FROM Store WHERE LOWER(StoreName) LIKE @StoreName";
+
+            var stores = new List<Store>();
+
+            using (var sqlConnection = new SqlConnection(Settings.ConnectionString))
+            {
+                using (var sqlCommand = new SqlCommand(sql, sqlConnection))
+                {
+                    storeName = $"%{storeName.ToLower()}%";
+                    sqlCommand.Parameters.AddWithValue("@StoreName", storeName);
+
+                    sqlConnection.Open();
+
+                    using (var dataReader = sqlCommand.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            Store store = this.GetStore(dataReader);
+                            stores.Add(store);
+                        }
+                    }
+                }
+            }
+            return stores;
+        }
+
         #endregion
 
         #region Private Methods

@@ -37,13 +37,6 @@
             return stores;
         }
 
-        public List<Store> StoreSearch(string storeName)
-        {
-            var stores = this._storeRepository.StoreSearch(storeName);
-
-            return stores;
-        }
-
         public List<Store> GetStoresByProductId(Guid productId)
         {
             if (productId == Guid.Empty)
@@ -120,8 +113,17 @@
             return serviceResult;
         }
 
-        
+        public List<Store> StoreSearch(string storeName)
+        {
+            if (storeName == null)
+            {
+                throw new ArgumentNullException(nameof(storeName));
+            }
 
+            var stores = this._storeRepository.StoreSearch(storeName);
+
+            return stores;
+        }
         #endregion
 
 

@@ -6,12 +6,13 @@
 
     public interface IStoreRepository
     {
-        bool Delete(Guid storeId);
         List<Store> Get();
-        List<Store> StoreSearch(string storeName);
         List<Store> GetStoresByProductId(Guid productId);
         Store GetSingle(Guid storeId);
         bool Insert(Store store);
         bool Update(Store store);
+        bool Delete(Guid storeId);
+        List<Store> StoreSearch(string storeName);
+
     }
 }

@@ -37,28 +37,6 @@ namespace StoreFront.Repository.Test
         #region Tests
 
         [Fact]
-        public void GetSingle_Success()
-        {
-            var result = _storeProductRepository.GetSingle(Guid.Parse("c25ef7e4-5641-40ac-b945-306fd3efc04b"), Guid.Parse("f1c2cf3e-b65f-4991-84a9-eca8dca3a08a"));
-
-            Assert.NotNull(result);
-        }
-
-        [Fact]
-        public void GetSingle_Fail()
-        {
-            var result = _storeProductRepository.GetSingle(Guid.Parse("30899619-0ddd-41b3-9e72-885ff940802f"), Guid.Parse("b56e66c1-0f1f-4350-b161-d3c6bb3bc391"));
-
-            Assert.Null(result);
-        }
-
-        [Fact]
-        public void GetSingle_Exception()
-        {
-            Assert.Throws<ArgumentException>(() => _storeProductRepository.GetSingle(Guid.Empty, Guid.Empty));
-        }
-
-        [Fact]
         public void Insert_Success()
         {
             var storeProduct = new StoreProduct()

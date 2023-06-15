@@ -29,6 +29,13 @@ namespace StoreFront.Repository.Test
         private StoreRepository _storeRepository { get; }
 
         #region Tests
+        [Fact]
+        public void Get_Success()
+        {
+            var result = this._storeRepository.Get();
+
+            Assert.Equal(3, result.Count);
+        }
 
         [Fact]
         public void GetSingle_Success()

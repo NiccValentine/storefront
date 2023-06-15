@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "StoreFront.Common": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:53448;http://localhost:53449"
+    }
+  }
+}

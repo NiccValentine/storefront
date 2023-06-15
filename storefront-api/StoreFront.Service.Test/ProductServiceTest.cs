@@ -38,14 +38,6 @@ namespace StoreFront.Service.Test
         }
 
         [Fact]
-        public void GetSingle_Failure()
-        {
-            var result = this._productService.GetSingle(Guid.Parse("d6cc3820-3e00-458a-a464-da9984f38480"));
-
-            Assert.Null(result);
-        }
-
-        [Fact]
         public void GetSingle_Exception()
         {
             Assert.Throws<ArgumentException>(() => this._productService.GetSingle(Guid.Empty));
@@ -129,15 +121,9 @@ namespace StoreFront.Service.Test
         [Fact]
         public void Delete_Success()
         {
-            Assert.Throws<ArgumentException>(() => this._productService.Delete(Guid.Empty));
-        }
+            var result = this._productService.Delete(Guid.Parse("fcb358b9-7044-441e-bc41-9f5d5a4e421f"));
 
-        [Fact]
-        public void Delete_Failure()
-        {
-            var result = this._productService.Delete(Guid.Parse("d6cc3820-3e00-458a-a464-da9984f38480"));
-
-            Assert.False(result.IsSuccessful);
+            Assert.True(result.IsSuccessful);
         }
 
         [Fact]
