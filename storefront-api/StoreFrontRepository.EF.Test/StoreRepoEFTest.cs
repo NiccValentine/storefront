@@ -45,6 +45,20 @@ namespace StoreFrontRepository.EF.Test
         }
 
         [Fact]
+        public void GetStoresByProductId_Success()
+        {
+            var result = this._storeRepositoryEF.GetStoresByProductId(Guid.Parse("f1c2cf3e-b65f-4991-84a9-eca8dca3a08a"));
+
+            Assert.Equal(1, result.Count);
+        }
+
+        [Fact]
+        public void GetStoresByProductId_Exception()
+        {
+            Assert.Throws<ArgumentException>(() => this._storeRepositoryEF.GetStoresByProductId(Guid.Empty));
+        }
+
+        [Fact]
         public void GetSingle_Success()
         {
             var result = this._storeRepositoryEF.GetSingle(Guid.Parse("ff0c12cc-c79a-428d-aafc-7a93970b01cd"));
@@ -134,6 +148,27 @@ namespace StoreFrontRepository.EF.Test
             Assert.Throws<ArgumentException>(() => this._storeRepositoryEF.Delete(Guid.Empty));
         }
 
+        [Fact]
+        public void StoreSearch_Success1()
+        {
+            var result = this._storeRepositoryEF.StoreSearch("");
+
+            Assert.Equal(3, result.Count);
+        }
+
+        [Fact]
+        public void StoreSearch_Success2()
+        {
+            var result = this._storeRepositoryEF.StoreSearch("store2");
+
+            Assert.Equal(1, result.Count);
+        }
+
+        [Fact]
+        public void StoreSearch_Exception()
+        {
+            Assert.Throws<ArgumentNullException>(() => this._storeRepositoryEF.StoreSearch(null));
+        }
         #endregion
 
         #region Disposal

@@ -33,8 +33,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\StoreFront.EF.Repository\StoreFront.EF.Repository.csproj" />
-    <ProjectReference Include="..\StoreFront.Repository\StoreFront.Repository.csproj" />
+    <ProjectReference Include="..\StoreFront.EF.Repository\StoreFront.Repository.EF.csproj" />
+    <ProjectReference Include="..\StoreFront.Repository\StoreFront.Repository.ADO.csproj" />
   </ItemGroup>
 
   <ItemGroup>

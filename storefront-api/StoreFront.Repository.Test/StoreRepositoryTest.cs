@@ -8,7 +8,7 @@ namespace StoreFront.Repository.Test
     [Collection("Sequential")]
     public class StoreRepositoryTest : IDisposable
     {
-        public StoreRepositoryTest() 
+        public StoreRepositoryTest()
         {
             this._sqlLoader = new SqlLoader();
 
@@ -35,6 +35,20 @@ namespace StoreFront.Repository.Test
             var result = this._storeRepository.Get();
 
             Assert.Equal(3, result.Count);
+        }
+
+        [Fact]
+        public void GetStoresByProductId_Success()
+        {
+            var result = this._storeRepository.GetStoresByProductId(Guid.Parse("f1c2cf3e-b65f-4991-84a9-eca8dca3a08a"));
+
+            Assert.Equal(1, result.Count);
+        }
+
+        [Fact]
+        public void GetStoresByProductId_Exception()
+        {
+            Assert.Throws<ArgumentException>(() => this._storeRepository.GetStoresByProductId(Guid.Empty));
         }
 
         [Fact]
@@ -127,6 +141,27 @@ namespace StoreFront.Repository.Test
             Assert.Throws<ArgumentException>(() => this._storeRepository.Delete(Guid.Empty));
         }
 
+        [Fact]
+        public void StoreSearch_Success1()
+        {
+            var result = this._storeRepository.StoreSearch("");
+
+            Assert.Equal(3, result.Count);
+        }
+
+        [Fact]
+        public void StoreSearch_Success2()
+        {
+            var result = this._storeRepository.StoreSearch("store2");
+
+            Assert.Equal(1, result.Count);
+        }
+
+        [Fact]
+        public void StoreSearch_Exception()
+        {
+            Assert.Throws<ArgumentNullException>(() => this._storeRepository.StoreSearch(null));
+        }
         #endregion
 
         #region Disposal

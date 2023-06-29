@@ -45,7 +45,7 @@ namespace StoreFront.Repository.Test
                 ProductId = Guid.Parse("f0743f41-4c22-432a-9501-1855bdc5f887"),
             };
 
-            var result = _storeProductRepository.Insert(storeProduct);
+            var result = this._storeProductRepository.Insert(storeProduct);
 
             Assert.True(result);
         }
@@ -55,21 +55,29 @@ namespace StoreFront.Repository.Test
         {
             StoreProduct storeProduct = null;
 
-            Assert.Throws<ArgumentNullException>(() => _storeProductRepository.Insert(storeProduct));
+            Assert.Throws<ArgumentNullException>(() => this._storeProductRepository.Insert(storeProduct));
         }
 
         [Fact]
         public void Delete_Success()
         {
-            var result = _storeProductRepository.Delete(Guid.Parse("c25ef7e4-5641-40ac-b945-306fd3efc04b"), Guid.Parse("f1c2cf3e-b65f-4991-84a9-eca8dca3a08a"));
+            var result = this._storeProductRepository.Delete(Guid.Parse("c25ef7e4-5641-40ac-b945-306fd3efc04b"), Guid.Parse("f1c2cf3e-b65f-4991-84a9-eca8dca3a08a"));
 
             Assert.True(result);
         }
 
         [Fact]
-        public void Delete_Failure()
+        public void Delete_Failure1()
         {
-            var result = _storeProductRepository.Delete(Guid.Parse("83fdc303-2b14-4436-a1dc-5a9dad9f959a"), Guid.Parse("b090ebcd-33e8-419e-9da7-d1b4d2b00114"));
+            var result = this._storeProductRepository.Delete(Guid.Parse("83fdc303-2b14-4436-a1dc-5a9dad9f959a"), Guid.Parse("f1c2cf3e-b65f-4991-84a9-eca8dca3a08a"));
+
+            Assert.False(result);
+        }
+
+        [Fact]
+        public void Delete_Failure2()
+        {
+            var result = this._storeProductRepository.Delete(Guid.Parse("c25ef7e4-5641-40ac-b945-306fd3efc04b"), Guid.Parse("f6bde077-e480-4cbb-aec9-8529619a6b0a"));
 
             Assert.False(result);
         }
@@ -77,7 +85,7 @@ namespace StoreFront.Repository.Test
         [Fact]
         public void Delete_Exception()
         {
-            Assert.Throws<ArgumentException>(() => _storeProductRepository.Delete(Guid.Empty, Guid.Empty));
+            Assert.Throws<ArgumentException>(() => this._storeProductRepository.Delete(Guid.Empty, Guid.Empty));
         }
 
         #endregion

@@ -43,6 +43,34 @@ namespace StoreFront.Repository.Test
         }
 
         [Fact]
+        public void GetProductsNotMatchingStoreId_Success()
+        {
+            var result = this._productRepository.GetProductsNotMatchingStoreId(Guid.Parse("c25ef7e4-5641-40ac-b945-306fd3efc04b"));
+        
+            Assert.Equal(2, result.Count);
+        }
+
+        [Fact]
+        public void GetProductsNotMatchingStoreId_Exception()
+        {
+            Assert.Throws<ArgumentException>(() => this._productRepository.GetProductsNotMatchingStoreId(Guid.Empty));
+        }
+
+        [Fact]
+        public void GetProductsByStoreId_Success()
+        {
+            var result = this._productRepository.GetProductsByStoreId(Guid.Parse("ff0c12cc-c79a-428d-aafc-7a93970b01cd"));
+
+            Assert.Equal(1, result.Count);
+        }
+
+        [Fact]
+        public void GetProductsByStoreId_Exception()
+        {
+            Assert.Throws<ArgumentException>(() => this._productRepository.GetProductsByStoreId(Guid.Empty));
+        }
+
+        [Fact]
         public void GetSingle_Success()
         {
             var result = this._productRepository.GetSingle(Guid.Parse("a7c29719-d5ed-400c-ae26-be578ee22b38"));
@@ -124,6 +152,28 @@ namespace StoreFront.Repository.Test
             var result = this._productRepository.Delete(Guid.Parse("cac0d3d6-8558-401d-a94a-5b96dc409556"));
 
             Assert.False(result);
+        }
+
+        [Fact]
+        public void ProductSearch_Success1()
+        {
+            var result = this._productRepository.ProductSearch("");
+
+            Assert.Equal(3, result.Count);
+        }
+
+        [Fact]
+        public void ProductSearch_Success2()
+        {
+            var result = this._productRepository.ProductSearch("product2");
+
+            Assert.Equal(1, result.Count);
+        }
+
+        [Fact]
+        public void ProductSearch_Exception()
+        {
+            Assert.Throws<ArgumentNullException>(() => this._productRepository.ProductSearch(null));
         }
         #endregion
 

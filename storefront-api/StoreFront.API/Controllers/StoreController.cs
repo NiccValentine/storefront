@@ -22,7 +22,14 @@
             {
                 var stores = this._storeService.Get();
 
-                return this.StatusCode(200, stores);
+                if (stores.Count == 0)
+                {
+                    return this.StatusCode(204);
+                }
+                else
+                {
+                    return this.StatusCode(200, stores);
+                }
             }
             catch (ArgumentNullException argumentNullException)
             {

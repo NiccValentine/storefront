@@ -1,7 +1,6 @@
 ﻿namespace StoreFront.Repository
 {
     using System;
-    using System.Collections.Generic;
     using System.Data.SqlClient;
     using Common;
     using Common.Interfaces.Repositories;
@@ -82,15 +81,6 @@
         #endregion
 
         #region Private Methods
-
-        private StoreProduct GetStoreProduct(SqlDataReader dataReader)
-        {
-            return new StoreProduct
-            {
-                StoreId = (Guid)dataReader["StoreId"],
-                ProductId = (Guid)dataReader["ProductId"]
-            };
-        }
 
         private void GetParameters(StoreProduct storeProduct, SqlCommand sqlCommand)
         {

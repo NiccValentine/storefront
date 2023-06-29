@@ -34,6 +34,7 @@ namespace StoreFront.API.Test
             };
 
             #region Mocks
+            storeService.Get().Returns(new List<Store>() { new Store() });
             storeService.GetSingle(Arg.Any<Guid>()).Returns(storeNull);
             storeService.Insert(this._successStore).Returns(new ServiceResult<Store>() { IsSuccessful = true });
             storeService.Insert(this._failureStore).Returns(new ServiceResult<Store>() { IsSuccessful = false });
@@ -56,6 +57,15 @@ namespace StoreFront.API.Test
         #endregion
 
         #region Tests
+        [Fact]
+        public void Get_Success()
+        {
+            var result = (ObjectResult)this._storeController
+                .Get();
+
+            Assert.Equal(200, result.StatusCode);
+        }
+
         [Fact]
         public void GetStoresByProductId_Failure()
         {

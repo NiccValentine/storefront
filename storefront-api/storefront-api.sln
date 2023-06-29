@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreFront.Common", "StoreFront.Common\StoreFront.Common.csproj", "{E86385C1-16FD-4FA5-B5B2-F60ACCC0AE7F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreFront.Repository", "StoreFront.Repository\StoreFront.Repository.csproj", "{5F6D7D03-CFDA-4C8C-BDF3-FEFBC2576B04}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreFront.Repository.ADO", "StoreFront.Repository\StoreFront.Repository.ADO.csproj", "{5F6D7D03-CFDA-4C8C-BDF3-FEFBC2576B04}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreFront.Service", "StoreFront.Service\StoreFront.Service.csproj", "{ACE08DB0-6EC9-43A7-B3D4-3C7D81242A8D}"
 EndProject
@@ -13,17 +13,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreFront.API", "StoreFron
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{408F3B15-E6F2-4116-8ED1-7FA0E57E526F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreFront.Repository.Test", "StoreFront.Repository.Test\StoreFront.Repository.Test.csproj", "{45CCDB8F-EF75-49D8-919B-89DE0BAE1B02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreFront.Repository.ADO.Test", "StoreFront.Repository.Test\StoreFront.Repository.ADO.Test.csproj", "{45CCDB8F-EF75-49D8-919B-89DE0BAE1B02}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreFront.Service.Test", "StoreFront.Service.Test\StoreFront.Service.Test.csproj", "{FA2E6BEC-B129-4F2B-808D-53CC1BF42C41}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreFront.API.Test", "StoreFront.API.Test\StoreFront.API.Test.csproj", "{4C94B628-0D42-481B-9D09-F432ABFD3B47}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StoreFront.EF", "StoreFront.EF", "{F5E40A2D-20D6-45A7-B1CC-D7B1DB5CD1B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreFront.Repository.EF", "StoreFront.EF.Repository\StoreFront.Repository.EF.csproj", "{27E2AA06-7788-4220-A42C-6BB3BC018D0D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreFront.EF.Repository", "StoreFront.EF.Repository\StoreFront.EF.Repository.csproj", "{27E2AA06-7788-4220-A42C-6BB3BC018D0D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreFrontRepository.EF.Test", "StoreFrontRepository.EF.Test\StoreFrontRepository.EF.Test.csproj", "{4F21FB94-69A0-444C-A637-5317699740B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreFront.Repository.EF.Test", "StoreFrontRepository.EF.Test\StoreFront.Repository.EF.Test.csproj", "{4F21FB94-69A0-444C-A637-5317699740B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,7 +73,6 @@ Global
 		{45CCDB8F-EF75-49D8-919B-89DE0BAE1B02} = {408F3B15-E6F2-4116-8ED1-7FA0E57E526F}
 		{FA2E6BEC-B129-4F2B-808D-53CC1BF42C41} = {408F3B15-E6F2-4116-8ED1-7FA0E57E526F}
 		{4C94B628-0D42-481B-9D09-F432ABFD3B47} = {408F3B15-E6F2-4116-8ED1-7FA0E57E526F}
-		{27E2AA06-7788-4220-A42C-6BB3BC018D0D} = {F5E40A2D-20D6-45A7-B1CC-D7B1DB5CD1B4}
 		{4F21FB94-69A0-444C-A637-5317699740B4} = {408F3B15-E6F2-4116-8ED1-7FA0E57E526F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

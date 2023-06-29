@@ -7,6 +7,7 @@ using Xunit;
 
 namespace StoreFront.Service.Test
 {
+    [Collection("Sequential")]
     public class StoreProductServiceTest
     {
         public StoreProductServiceTest()
@@ -17,15 +18,21 @@ namespace StoreFront.Service.Test
 
             var storeProductRepository = Substitute.For<IStoreProductRepository>();
 
+            this._storeProductService = new StoreProductService(storeProductRepository);
+
+            #region Mocks
             storeProductRepository.Insert(Arg.Any<StoreProduct>()).Returns(true);
             storeProductRepository.Delete(Arg.Any<Guid>(), Arg.Any<Guid>()).Returns(false);
             storeProductRepository.Delete(Guid.Parse("fcb358b9-7044-441e-bc41-9f5d5a4e421f"), Guid.Parse("de208a9c-19a9-48f2-a76f-397638f8685f")).Returns(true, true);
-
-            this._storeProductService = new StoreProductService(storeProductRepository);
+            #endregion
         }
 
+        #region Private Constructors
         private StoreProductService _storeProductService { get; }
 
+        #endregion
+
+        #region Tests
         [Fact]
         public void Insert_Success()
         {
@@ -39,6 +46,12 @@ namespace StoreFront.Service.Test
 
             Assert.True(result.IsSuccessful);
             Assert.True(result.IsValid);
+        }
+
+        [Fact]
+        public void Insert_Exception()
+        {
+            Assert.Throws<ArgumentNullException>(() => this._storeProductService.Insert(null));
         }
 
         [Fact]
@@ -90,5 +103,6 @@ namespace StoreFront.Service.Test
         {
             Assert.Throws<ArgumentException>(() => this._storeProductService.Delete(Guid.NewGuid(), Guid.Empty));
         }
+        #endregion
     }
 }

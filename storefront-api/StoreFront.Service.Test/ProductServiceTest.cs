@@ -4,30 +4,54 @@ using StoreFront.Common.Models;
 using StoreFront.Service;
 using NSubstitute;
 using Xunit;
+using System.Collections.Generic;
 
 namespace StoreFront.Service.Test
 {
+    [Collection("Sequential")]
     public class ProductServiceTest
     {
+        #region Public Constructors
         public ProductServiceTest() 
         {
             var testProduct = new Product();
+
 
             Product productNull = null;
 
             var productRepository = Substitute.For<IProductRepository>();
 
+            this._productService = new ProductService(productRepository);
+
+            #region Mocks
             productRepository.GetSingle(Arg.Any<Guid>()).Returns(productNull);
             productRepository.GetSingle(Guid.Parse("fcb358b9-7044-441e-bc41-9f5d5a4e421f")).Returns(testProduct);
             productRepository.Insert(Arg.Any<Product>()).Returns(true);
             productRepository.Update(Arg.Any<Product>()).Returns(true);
             productRepository.Delete(Arg.Any<Guid>()).Returns(false);
             productRepository.Delete(Guid.Parse("fcb358b9-7044-441e-bc41-9f5d5a4e421f")).Returns(true);
+            #endregion
+        }
+        #endregion
 
-            this._productService = new ProductService(productRepository);
+        #region Private Constructors
+            private ProductService _productService { get; }
+
+        #endregion
+
+        #region Tests
+
+        [Fact]
+        public void GetProductsNotMatchingStoreId_Exception()
+        {
+            Assert.Throws<ArgumentException>(() => this._productService.GetProductsNotMatchingStoreId(Guid.Empty));
         }
 
-        public ProductService _productService { get; }
+        [Fact]
+        public void GetProductsByStoreId_Exception()
+        {
+            Assert.Throws<ArgumentException>(() => this._productService.GetProductsByStoreId(Guid.Empty));
+        }
 
         [Fact]
         public void GetSingle_Success()
@@ -57,6 +81,12 @@ namespace StoreFront.Service.Test
 
             Assert.True(result.IsSuccessful);
             Assert.True(result.IsValid);
+        }
+
+        [Fact]
+        public void Insert_Exception()
+        {
+            Assert.Throws<ArgumentNullException>(() => this._productService.Insert(null));
         }
 
         [Fact]
@@ -119,6 +149,12 @@ namespace StoreFront.Service.Test
         }
 
         [Fact]
+        public void Update_Exception()
+        {
+            Assert.Throws<ArgumentNullException>(() => this._productService.Update(null));
+        }
+
+        [Fact]
         public void Delete_Success()
         {
             var result = this._productService.Delete(Guid.Parse("fcb358b9-7044-441e-bc41-9f5d5a4e421f"));
@@ -131,5 +167,12 @@ namespace StoreFront.Service.Test
         {
             Assert.Throws<ArgumentException>(() => this._productService.Delete(Guid.Empty));
         }
+
+        [Fact]
+        public void ProductSearch_Exception()
+        {
+            Assert.Throws<ArgumentNullException>(() => this._productService.ProductSearch(null));
+        }
+        #endregion
     }
 }

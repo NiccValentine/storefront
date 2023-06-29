@@ -4,13 +4,14 @@ using StoreFront.Common.Models;
 using StoreFront.Service;
 using NSubstitute;
 using Xunit;
-
+using System.Collections.Generic;
 
 namespace StoreFront.Service.Test
 {
+    [Collection("Sequential")]
     public class StoreServiceTest
     {
-        public StoreServiceTest() 
+        public StoreServiceTest()
         {
             var testStore = new Store();
 
@@ -18,17 +19,29 @@ namespace StoreFront.Service.Test
 
             var storeRepository = Substitute.For<IStoreRepository>();
 
+            this._storeService = new StoreService(storeRepository);
+
+            #region Mocks
             storeRepository.GetSingle(Arg.Any<Guid>()).Returns(storeNull);
             storeRepository.GetSingle(Guid.Parse("fcb358b9-7044-441e-bc41-9f5d5a4e421f")).Returns(testStore);
             storeRepository.Insert(Arg.Any<Store>()).Returns(true);
             storeRepository.Update(Arg.Any<Store>()).Returns(true);
             storeRepository.Delete(Arg.Any<Guid>()).Returns(false);
             storeRepository.Delete(Guid.Parse("fcb358b9-7044-441e-bc41-9f5d5a4e421f")).Returns(true);
-
-            this._storeService = new StoreService(storeRepository);
+            #endregion
         }
 
+        #region Private Constructors
         private StoreService _storeService { get; }
+
+        #endregion
+
+        #region Tests
+        [Fact]
+        public void GetStoresByProductId_Exception()
+        {
+            Assert.Throws<ArgumentException>(() => this._storeService.GetStoresByProductId(Guid.Empty));
+        }
 
         [Fact]
         public void GetSingle_Success()
@@ -58,6 +71,12 @@ namespace StoreFront.Service.Test
 
             Assert.True(result.IsSuccessful);
             Assert.True(result.IsValid);
+        }
+
+        [Fact]
+        public void Insert_Exception()
+        {
+            Assert.Throws<ArgumentNullException>(() => this._storeService.Insert(null));
         }
 
         [Fact]
@@ -124,6 +143,12 @@ namespace StoreFront.Service.Test
         }
 
         [Fact]
+        public void Update_Exception()
+        {
+            Assert.Throws<ArgumentNullException>(() => this._storeService.Update(null));
+        }
+
+        [Fact]
         public void Delete_Success()
         {
             var result = this._storeService.Delete(Guid.Parse("fcb358b9-7044-441e-bc41-9f5d5a4e421f"));
@@ -136,5 +161,12 @@ namespace StoreFront.Service.Test
         {
             Assert.Throws<ArgumentException>(() => this._storeService.Delete(Guid.Empty));
         }
+
+        [Fact]
+        public void StoreSearch_Exception()
+        {
+            Assert.Throws<ArgumentNullException>(() => this._storeService.StoreSearch(null));
+        }
+        #endregion
     }
 }

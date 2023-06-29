@@ -22,7 +22,14 @@
             {
                 var products = this._productService.Get();
 
-                return this.StatusCode(200, products);
+                if (products.Count == 0)
+                {
+                    return this.StatusCode(204);
+                }
+                else
+                {
+                    return this.StatusCode(200, products);
+                }
             }
             catch (ArgumentNullException argumentNullException)
             {

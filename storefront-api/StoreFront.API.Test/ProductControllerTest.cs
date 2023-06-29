@@ -33,6 +33,7 @@ namespace StoreFront.API.Test
             this._productController = new ProductController(productService);
 
             #region Mocks
+            productService.Get().Returns(new List<Product>() { new Product() });
             productService.GetSingle(Arg.Any<Guid>()).Returns(productNull);
             productService.Insert(this._successProduct).Returns(new ServiceResult<Product>() { IsSuccessful = true });
             productService.Insert(this._failureProduct).Returns(new ServiceResult<Product>() { IsSuccessful = false });
@@ -56,6 +57,15 @@ namespace StoreFront.API.Test
         #endregion
 
         #region Tests
+
+        [Fact]
+        public void Get_Success()
+        {
+            var result = (ObjectResult)this._productController
+                .Get();
+
+            Assert.Equal(200, result.StatusCode);
+        }
 
         [Fact]
         public void GetProductsNotMatchingStoreId_Failure()
