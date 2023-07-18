@@ -12,6 +12,8 @@ namespace StoreFront.API
     using StoreFront.Service;
     using StoreFront.Common;
     using StoreFront.EF.Repository;
+    using StoreFront.Common.Interfaces.Logging;
+    using StoreFront.Common.Logging;
 
     public class Startup
     {
@@ -39,13 +41,13 @@ namespace StoreFront.API
             }
             else
             {
-                services.AddScoped<IProductRepository, ProductRepository>();
-                services.AddScoped<IStoreRepository, StoreRepository>();
-                services.AddScoped<IStoreProductRepository, StoreProductRepository>();
+                services.AddScoped<IProductRepository, ProductRepositoryADO>();
+                services.AddScoped<IStoreRepository, StoreRepositoryADO>();
+                services.AddScoped<IStoreProductRepository, StoreProductRepositoryADO>();
             }
 
             // Services
-
+            services.AddSingleton<ILogService, LogService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IStoreService, StoreService>();
             services.AddScoped<IStoreProductService, StoreProductService>();

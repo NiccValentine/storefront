@@ -3,6 +3,7 @@ using SqlTestPrep;
 using Xunit;
 using StoreFront.Common.Models;
 using StoreFront.EF.Repository;
+using StoreFront.Common.Logging;
 
 namespace StoreFrontRepository.EF.Test
 {
@@ -14,7 +15,7 @@ namespace StoreFrontRepository.EF.Test
         {
             this._sqlLoader = new SqlLoader();
 
-            this._storeProductRepositoryEF = new StoreProductRepositoryEF();
+            this._storeProductRepositoryEF = new StoreProductRepositoryEF(new LogService());
 
             try
             {

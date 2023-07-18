@@ -5,6 +5,7 @@ using StoreFront.Service;
 using NSubstitute;
 using Xunit;
 using System.Collections.Generic;
+using StoreFront.Common.Logging;
 
 namespace StoreFront.Service.Test
 {
@@ -21,7 +22,7 @@ namespace StoreFront.Service.Test
 
             var productRepository = Substitute.For<IProductRepository>();
 
-            this._productService = new ProductService(productRepository);
+            this._productService = new ProductService(productRepository, new LogService());
 
             #region Mocks
             productRepository.GetSingle(Arg.Any<Guid>()).Returns(productNull);

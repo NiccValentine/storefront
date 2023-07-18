@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NSubstitute;
 using StoreFront.API.Controllers;
 using StoreFront.Common.Interfaces.Services;
+using StoreFront.Common.Logging;
 using StoreFront.Common.Models;
 using Xunit;
 
@@ -30,7 +31,7 @@ namespace StoreFront.API.Test
                 ProductId = Guid.Empty
             };
 
-            this._productController = new ProductController(productService);
+            this._productController = new ProductController(productService, new LogService());
 
             #region Mocks
             productService.Get().Returns(new List<Product>() { new Product() });

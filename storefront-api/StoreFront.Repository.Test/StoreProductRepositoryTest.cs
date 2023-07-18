@@ -2,6 +2,7 @@
 using StoreFront.Common.Models;
 using SqlTestPrep;
 using Xunit;
+using StoreFront.Common.Logging;
 
 namespace StoreFront.Repository.Test
 {
@@ -13,7 +14,7 @@ namespace StoreFront.Repository.Test
         {
             _sqlLoader = new SqlLoader();
 
-            _storeProductRepository = new StoreProductRepository();
+            _storeProductRepository = new StoreProductRepositoryADO(new LogService());
 
             try
             {
@@ -30,7 +31,7 @@ namespace StoreFront.Repository.Test
 
         private SqlLoader _sqlLoader { get; }
 
-        private StoreProductRepository _storeProductRepository { get; }
+        private StoreProductRepositoryADO _storeProductRepository { get; }
 
         #endregion
 

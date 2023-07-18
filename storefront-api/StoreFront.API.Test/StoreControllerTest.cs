@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NSubstitute;
 using StoreFront.API.Controllers;
 using StoreFront.Common.Interfaces.Services;
+using StoreFront.Common.Logging;
 using StoreFront.Common.Models;
 using StoreFront.Service;
 using Xunit;
@@ -21,7 +22,7 @@ namespace StoreFront.API.Test
 
             Store storeNull = null;
 
-            this._storeController = new StoreController(storeService);
+            this._storeController = new StoreController(storeService, new LogService());
 
             this._successStore = new Store()
             {

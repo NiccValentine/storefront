@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using NSubstitute;
 using StoreFront.API.Controllers;
 using StoreFront.Common.Interfaces.Services;
+using StoreFront.Common.Logging;
 using StoreFront.Common.Models;
 using Xunit;
 
@@ -19,7 +20,7 @@ namespace StoreFront.API.Test
 
             StoreProduct storeProductNull = null;
 
-            this._storeProductController = new StoreProductController(storeProductService);
+            this._storeProductController = new StoreProductController(storeProductService, new LogService());
 
             this._successStoreProduct = new StoreProduct()
             {
